@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>I Knew It 💖</title>
+  <title>I Knew It ❤️</title>
 
   <style>
     body {
@@ -13,6 +13,7 @@
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
+      overflow: hidden;
     }
 
     .container {
@@ -22,7 +23,7 @@
       max-width: 420px;
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      animation: fadeIn 1.2s ease;
+      z-index: 2;
     }
 
     img {
@@ -31,24 +32,49 @@
       margin-bottom: 20px;
     }
 
-    h1 {
-      color: #ff4d6d;
-      margin-bottom: 10px;
+    .line {
+      opacity: 0;
+      font-size: 20px;
+      margin: 10px 0;
+      animation: fadeIn 1s forwards;
     }
 
-    p {
-      font-size: 18px;
-      color: #333;
-    }
+    .line:nth-child(1) { animation-delay: 0.5s; }
+    .line:nth-child(2) { animation-delay: 1.5s; }
+    .line:nth-child(3) { animation-delay: 2.5s; }
 
     @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border-radius: 25px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
       from {
-        opacity: 0;
-        transform: scale(0.95);
+        transform: translateY(0);
+        opacity: 1;
       }
       to {
-        opacity: 1;
-        transform: scale(1);
+        transform: translateY(-110vh);
+        opacity: 0;
       }
     }
   </style>
@@ -56,15 +82,44 @@
 
 <body>
 
-  <div class="container">
-    <img src="proposal.jpg.png" alt="Proposal Image">
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-    <h1>💘 I knew it! 💘</h1>
-    <p>
-      I knew you would say YES ❤️  
-      You just made this moment unforgettable ✨
-    </p>
+  <div class="container">
+    <img src="proposal.jpg.png" alt="Proposal">
+
+    <div class="line">💘 I knew it! 💘</div>
+    <div class="line" id="nameLine"></div>
+    <div class="line">You just made this moment unforgettable ✨</div>
+
+    <button onclick="finalMessage()">One more thing…</button>
   </div>
+
+  <script>
+    // 🔹 Add her name dynamically
+    const herName = "Laksheeta";
+    document.getElementById("nameLine").innerText =
+      herName + ", I knew you would say YES ❤️";
+
+    // 🔹 Final button message
+    function finalMessage() {
+      alert("Thank you for making my day brighter 💕");
+    }
+
+    // 🔹 Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+  </script>
 
 </body>
 </html>
