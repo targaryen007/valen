@@ -13,6 +13,9 @@ noBtn.addEventListener("mouseenter", () => {
 });
 
 function yesClick() {
+  window.location.href = "yes.html";
+}
+
   document.body.innerHTML = `
     <div style="
       height:100vh;
@@ -29,3 +32,4 @@ function yesClick() {
     </div>
   `;
 }
+
