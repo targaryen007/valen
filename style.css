@@ -1,0 +1,53 @@
+body {
+  height: 100vh;
+  background: linear-gradient(#ffd6e8, #ffeef4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  width: 360px;
+  position: relative;
+}
+
+.emoji {
+  font-size: 50px;
+}
+
+.button-area {
+  margin-top: 30px;
+  position: relative;
+  height: 120px;
+}
+
+button {
+  padding: 15px 35px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+.no {
+  background: #ccc;
+  position: absolute;
+  left: 140px;
+  top: 60px;
+}
+
+.hint {
+  margin-top: 20px;
+  font-size: 14px;
+  color: gray;
+}
